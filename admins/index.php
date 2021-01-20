@@ -1,5 +1,5 @@
 <?php
-    $noNavbar = "";
+    $noNavbar = "sdfsd";
             
         session_start();        
         include "init.php";
