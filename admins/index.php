@@ -2,12 +2,12 @@
     $noNavbar = "";
             
         session_start();        
-        include "init.php";
+        include "../init.php";
         
         if(isset($_SESSION['username'])) { 
             header("Location:dashboard.php");
             exit();
-        }
+        } 
         
         if($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -23,13 +23,13 @@
             if ( ($member['username'] == $username) && (password_verify($password,$member['password'])) ) {
                 $_SESSION['username'] = $member['username'];
                 $_SESSION['ID'] = $member['ID'];
+                $_SESSION['trust_status'] = $member['trust_status'];
                 header("Location:dashboard.php");
                 echo $_SESSION['username'];
                 exit();
             } else {
                 header("Location:index.php");
             }           
-
         }               
 ?>
 

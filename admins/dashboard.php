@@ -2,29 +2,32 @@
     session_start();
     
     if(isset($_SESSION['username'])) {
-        include "init.php";
+        include "../init.php";
     ?>
-
-    <div class='container'>        
-        <div style="border:none; text-align: center; box-shadow: 0 0 40px #ddC; border-radius: 10px; padding: 50px 0; margin-top: 100px">
-            <div style="margin:20px 0;">
-                <h2>Total Admins</h2>
-                <span style="color:#f30; font-weight:700; font-size: 50px">
-                <?php echo counter(1); ?>
-                </span>
+    <div class="container">
+        <div class="d-flex justify-content-center" style="border:none; text-align: center; box-shadow: 0 0 40px #ddC; border-radius: 10px; padding: 50px 0; margin-top: 100px">
+            <div style="margin:20px;">
+                <h2>Admins</h2>
+                <a href="adminsData.php"><h3><?php echo totalAdmins()?></h3></a>
             </div>
-            <div style="margin:20px 0;">                
-                <h2>Total Users</h2>
-                <span style="color:#f30; font-weight:700; font-size: 50px">
-                <?php echo counter(2); ?>
-                </span>
+            <div style="margin:20px;">
+                <h2>Users</h2>
+                <a href="#"><h3>50</h3></a>
             </div>
-            <a href="members.php?do=Manage">
-                <button style="border:none; font-weight:700; padding:10px 40px; font-size: 20px; box-shadow: 0 0 20px #393e46; border-radius: 10px">View members data</button>
-            </a>
+            <div style="margin:20px;">
+                <h2>Products</h2>
+                <a href="#"><h3>50</h3></a>
+            </div>
+            <div style="margin:20px;">
+                <h2>Products</h2>
+                <a href="#"><h3>50</h3></a>
+            </div>
+            <div style="margin:20px;">
+                <h2>Blogs</h2>
+                <a href="#"><h3>50</h3></a>
+            </div>
         </div>
     </div>
-
 <?php
     } else {
         header("Location:index.php");

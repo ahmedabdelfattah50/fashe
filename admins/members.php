@@ -73,75 +73,7 @@ session_start();
             echo "<a href='?do=Add'><button style='border:none; padding: 5px 10px; font-size:18px; margin-bottom: 30px;' class='btn btn-success'>Add Member  <i class='fas fa-user-plus'></i></button></a>";
 
         } else if($do == "Add") { ?>
-            <br><h2>Add Member</h2><br>        
-            <form  method="POST" action="?do=Insert">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Name</label>
-                        <input type="text" class="form-control" name="name_add" placeholder="Name" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Password</label>
-                        <input type="password" class="form-control" name="password_add" placeholder="Password" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Username</label>
-                        <input type="text" class="form-control" name="username_add" placeholder="Userame" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Email</label>
-                        <input type="email" class="form-control" name="email_add" placeholder="Email" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Phone</label>
-                        <input type="tel" class="form-control" name="phone_add" placeholder="Phone" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Trust Status</label>
-                        <select name="status_add" class="form-control" id="">
-                            <option value="1">Admin</option>
-                            <option value="2">User</option>
-                        </select>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
-            </form>
-        <?php
-        } else if($do == "Insert") {
-            if( $_SERVER['REQUEST_METHOD'] == "POST") {
-                $name_add       = $_POST['name_add'];
-                $password_add   = $_POST['password_add'];
-                $password_add_hased = password_hash($password_add, PASSWORD_DEFAULT);
-                $username_add   = $_POST['username_add'];
-                $email_add      = $_POST['email_add'];
-                $phone_add      = $_POST['phone_add'];
-                $status_add     = $_POST['status_add'];
-
-                $stmt = $con->prepare("INSERT INTO hosters(name,username,password,email,phone,date,trust_status) VALUES(:nameInsert,:username,:passwordInsert,:emailInsert,:phoneInsert,now(),:trust_status)");
             
-                $stmt->execute(array(
-                    ":nameInsert"           => $name_add,                    
-                    ":username"             => $username_add,
-                    ":passwordInsert"       => $password_add_hased,
-                    ":emailInsert"          => $email_add,
-                    ":phoneInsert"          => $phone_add,
-                    ":trust_status"         => $status_add
-                ));
-
-                // echo "<br><br><h2 class='alert alert-success'>Success One Member added<h2>";               
-                // timer(3,"members.php");
-
-                echo "<br><br><h2 class='alert alert-success'>Success One Member added<h2>";
-                timer(3,"?members.php");
-                
-            } else {
-                header("location:index.php");
-                exit();
-            }
         } else if($do == "Edit") {
             
             if ( isset($_GET['ID']) && is_numeric($_GET['ID'])) {

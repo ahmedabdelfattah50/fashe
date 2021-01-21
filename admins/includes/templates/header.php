@@ -9,6 +9,6 @@
         <link rel="stylesheet" href="<?php echo $css_path?>bootstrap 4_4_1.min.css">
         <link rel="stylesheet" href="<?php echo $css_path?>main.css">
 </head>
-<body>
+<body> 
 
 
