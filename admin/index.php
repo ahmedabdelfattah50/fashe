@@ -16,7 +16,7 @@
 
             $hasedPass = password_hash($password,PASSWORD_DEFAULT);
             
-            $stmt = $con->prepare("SELECT * FROM hosters WHERE (trust_status = 1 && username = ?)");
+            $stmt = $con->prepare("SELECT * FROM hosters WHERE ((trust_status = 1 || trust_status = 2)  && username = ?)");
             $stmt->execute(array($username));
             $member = $stmt->fetch();
                         

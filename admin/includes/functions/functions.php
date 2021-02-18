@@ -32,3 +32,13 @@ function checkAdminExisting($username,$email){
     ));
     return $stmt->fetchColumn();
 }
+
+// return one Admin from hosters table from the database
+function selectPersonalAdmin($id){
+    global $con; 
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE ID = :id");
+    $stmt->execute(array(
+        ':id' => $id
+    ));
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}

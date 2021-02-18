@@ -1,9 +1,9 @@
 <?php 
     session_start();
 
-    if(isset($_SESSION['username']) && is_numeric($_GET['degree'])){
+    if(isset($_SESSION['username']) && is_numeric($_GET['admin'])){
         include '../init.php';
-        $adminDegree = $_GET['degree'];
+        $adminDegree = $_GET['admin'];
     ?>
     
     <div class="container">
@@ -35,18 +35,11 @@
                     <label>Phone</label>
                     <input type="tel" class="form-control phone_add" placeholder="Phone" required>
                 </div>
-                <!-- <div class="form-group col-md-6">
-                    <label>Trust Status</label> -->
-                    <!-- <select class="form-control status_add" id="">
-                        <option value="1">Admin</option>
-                        <option value="2">User</option>
-                    </select> -->
-                    <?php if($adminDegree == 1){?>
-                            <input type="text" class="form-control status_add d-none" value='1'>
-                        <?php } else {?>
-                            <input type="text" class="form-control status_add d-none" value='2'>
-                        <?php }?>
-                <!-- </div> -->
+                <?php if($adminDegree == 1){?>
+                        <input type="text" class="form-control status_add d-none" value='1'>
+                <?php } else {?>
+                        <input type="text" class="form-control status_add d-none" value='2'>
+                <?php }?>
             </div>
             <button class="btn btn-primary adminSignIn">Sign in</button>
         </form>
@@ -87,7 +80,6 @@
                 });	
             });
         });
-
     </script>
 
     <?php
